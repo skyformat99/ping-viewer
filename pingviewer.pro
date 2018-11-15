@@ -31,6 +31,7 @@ CONFIG(debug, debug|release) {
         # Windows debug
         CONFIG += console
     }
+    QT += KCrash
 } else {
     message("Release Build !")
 }

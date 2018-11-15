@@ -1,3 +1,7 @@
+#ifndef QT_NO_DEBUG
+    #include <KCrash>
+#endif
+
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -27,6 +31,11 @@ PING_LOGGING_CATEGORY(mainCategory, "ping.main")
 
 int main(int argc, char *argv[])
 {
+#ifndef QT_NO_DEBUG
+    // Start KCrash
+    KCrash::initialize();
+#endif
+
     // Start logger ASAP
     Logger::installHandler();
 
