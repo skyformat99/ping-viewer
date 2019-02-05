@@ -41,6 +41,8 @@ void NetworkTool::checkInterfaceUpdate()
 
 void NetworkTool::checkNewVersionInGitHubPayload(const QJsonDocument& jsonDocument)
 {
+    QStringList potato;
+    qDebug() << potato[3];
     const static QString projectTag = QStringLiteral(GIT_TAG);
 
     auto semverToInt = [](const QString& version) -> int {
@@ -169,7 +171,7 @@ void NetworkTool::scheduleUpdateCheck()
         timer->deleteLater();
     });
     timer->setSingleShot(true);
-    timer->start(30000);
+    timer->start(5000);
 }
 
 void NetworkTool::checkNewFirmware(const QString& sensorName, std::function<void(QJsonDocument&)> function)

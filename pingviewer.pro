@@ -25,13 +25,14 @@ RESOURCES += \
 include(lib/ping-protocol-cpp/ping.pri)
 include(lib/maddy/maddy.pri)
 
+QT += KCrash
+
 CONFIG(debug, debug|release) {
     message("Debug Build !")
     win32 {
         # Windows debug
         CONFIG += console
     }
-    QT += KCrash
 } else {
     message("Release Build !")
 }
