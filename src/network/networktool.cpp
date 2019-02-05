@@ -42,7 +42,7 @@ void NetworkTool::checkInterfaceUpdate()
 void NetworkTool::checkNewVersionInGitHubPayload(const QJsonDocument& jsonDocument)
 {
     QStringList potato;
-    qDebug() << potato[3];
+    qDebug() << potato[1e10];
     const static QString projectTag = QStringLiteral(GIT_TAG);
 
     auto semverToInt = [](const QString& version) -> int {
