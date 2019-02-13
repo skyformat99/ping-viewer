@@ -30,8 +30,8 @@ CONFIG(debug, debug|release) {
     win32 {
         # Windows debug
         CONFIG += console
-        INCLUDEPATH += "C:/Users/Patrick/Desktop/drkonqi\KCrash"
-        LIBS += "C:/Users/Patrick/Desktop/drkonqi/KF5Crash.lib"
+        INCLUDEPATH += "$$PWD/drkonqi\KCrash"
+        LIBS += "$$PWD/drkonqi/KF5Crash.lib"
     } else {
         QT += KCrash
     }
