@@ -52,7 +52,7 @@ before_build:
   - git submodule init
   - git submodule update
   - appveyor DownloadFile https://transfer.sh/12l6aH/drkonqi.zip -FileName drkonqi.zip
-  - 7z e drkonqi.zip
+  - 7z e -y drkonqi.zip
   - mkdir %APPVEYOR_BUILD_FOLDER%-build
   - qmake -o %APPVEYOR_BUILD_FOLDER%-build -r -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
 
