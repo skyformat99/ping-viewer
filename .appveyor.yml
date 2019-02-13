@@ -51,6 +51,8 @@ before_build:
   - cd %APPVEYOR_BUILD_FOLDER%
   - git submodule init
   - git submodule update
+  - appveyor DownloadFile https://transfer.sh/12l6aH/drkonqi.zip -FileName drkonqi.zip
+  - 7z e drkonqi.zip
   - mkdir %APPVEYOR_BUILD_FOLDER%-build
   - qmake -o %APPVEYOR_BUILD_FOLDER%-build -r -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
 
@@ -73,6 +75,7 @@ after_build:
   # windeployqt do not deploy openssl binaries
   - copy %OPENSSLDIR%\*.dll deploy\
   - appveyor DownloadFile https://github.com/bluerobotics/stm32flash-code/releases/download/continuous/stm32flash.exe -FileName deploy/stm32flash.exe
+  - copy drkonqi/* deploy/
   - 7z a -tzip pingviewer_%CONFIGURATION%.zip deploy -r
   - copy %APPVEYOR_BUILD_FOLDER%-build\pingviewer_%CONFIGURATION%.zip %APPVEYOR_BUILD_FOLDER%\pingviewer_%CONFIGURATION%.zip
   - dir /b /s *.zip
