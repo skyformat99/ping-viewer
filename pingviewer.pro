@@ -6,10 +6,9 @@ RC_ICONS = deploy/icon.ico
 ICON = deploy/icon.icns
 
 CONFIG += \
-    c++14
-#    static \
-
-#qtquickcompiler \
+    c++14 \
+    qtquickcompiler \
+    static
 
 QT += core charts gui qml quick widgets quickcontrols2 concurrent svg xml
 
@@ -26,19 +25,15 @@ RESOURCES += \
 include(lib/ping-protocol-cpp/ping.pri)
 include(lib/maddy/maddy.pri)
 
-#include("C:/Users/Patrick/Desktop/drkonqi/KCrash/qt_KCrash.pri")
-#QML_IMPORT_PATH += "C:\Users\Patrick\Desktop\drkonqi\KCrash"
-INCLUDEPATH += "C:\Users\Patrick\Desktop\drkonqi\KCrash"
-#INCLUDEPATH += "C:\Users\Patrick\Desktop\drkonqi"
-LIBS += "C:/Users/Patrick/Desktop/drkonqi/KF5Crash.lib"
-
-#QT += KCrash
-
 CONFIG(debug, debug|release) {
     message("Debug Build !")
     win32 {
         # Windows debug
         CONFIG += console
+        INCLUDEPATH += "C:/Users/Patrick/Desktop/drkonqi\KCrash"
+        LIBS += "C:/Users/Patrick/Desktop/drkonqi/KF5Crash.lib"
+    } else {
+        QT += KCrash
     }
 } else {
     message("Release Build !")
@@ -87,9 +82,6 @@ exists ($$_PRO_FILE_PWD_/.git) {
     DEFINES += 'GIT_TAG=\\"-\\"'
     DEFINES += 'GIT_URL=\\"-\\"'
 }
-
-#LIBS += "C:/CraftRootDebug/lib/KF5Crash.lib"
-#LIBS += "C:/CraftRootDebug/lib/KF5Crashd.lib"
 
 message(" GIT_VERSION:      " $$GIT_VERSION)
 message(" GIT_VERSION_DATE: " $$GIT_VERSION_DATE)
