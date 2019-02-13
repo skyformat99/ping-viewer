@@ -48,7 +48,7 @@ void Logger::logMessage(const QString& msg, const QtMsgType& type, const QMessag
     // Save the message into the file
     _fileStream << QString("%1 %2\n").arg(time, msg);
 
-    _logModel.append(time, msg, _colors[type], _categoryIndexer[context.category]);
+    //_logModel.append(time, msg, _colors[type], _categoryIndexer[context.category]);
 }
 
 void Logger::handleMessage(QtMsgType type, const QMessageLogContext& context, const QString& msg)

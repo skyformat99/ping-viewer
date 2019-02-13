@@ -24,7 +24,8 @@ SerialLink::SerialLink(QObject* parent)
         switch(error) {
         case QSerialPort::NoError:
             break;
-        case QSerialPort::DeviceNotFoundError...QSerialPort::UnknownError:
+        //case QSerialPort::DeviceNotFoundError...QSerialPort::UnknownError:
+        case QSerialPort::DeviceNotFoundError:
             qCWarning(PING_PROTOCOL_SERIALLINK) << "Error is critical ! Port need to be closed.";
             qCWarning(PING_PROTOCOL_SERIALLINK) << "Error:" << error;
             finishConnection();

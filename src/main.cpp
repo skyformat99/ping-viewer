@@ -32,8 +32,9 @@ PING_LOGGING_CATEGORY(mainCategory, "ping.main")
 int main(int argc, char *argv[])
 {
     // Start logger ASAP
-    Logger::installHandler();
+    //Logger::installHandler();
 
+    qDebug() << "potatoo";
     QCoreApplication::setOrganizationName("Blue Robotics Inc.");
     QCoreApplication::setOrganizationDomain("bluerobotics.com");
     QCoreApplication::setApplicationName("Ping Viewer");
@@ -75,7 +76,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
     QQmlApplicationEngine engine;
-
+    qDebug() << "potato1";
     // Load the QML and set the Context
     // Logo
 #ifdef QT_NO_DEBUG
@@ -85,7 +86,7 @@ int main(int argc, char *argv[])
 
     // Function used in CI to test runtime errors
     // After 5 seconds, check if qml engine was loaded
-#ifdef AUTO_KILL
+#ifdef AUTO_KILL_POTATO
     QTimer *timer = new QTimer();
     QObject::connect(timer, &QTimer::timeout, [&app, &engine]() {
         if(engine.rootObjects().isEmpty()) {
@@ -97,7 +98,7 @@ int main(int argc, char *argv[])
     });
     timer->start(5000);
 #endif
-
+    qDebug() << "potato2";
     engine.rootContext()->setContextProperty("GitVersion", QStringLiteral(GIT_VERSION));
     engine.rootContext()->setContextProperty("GitVersionDate", QStringLiteral(GIT_VERSION_DATE));
     engine.rootContext()->setContextProperty("GitTag", QStringLiteral(GIT_TAG));
@@ -115,6 +116,9 @@ int main(int argc, char *argv[])
 //#ifndef QT_NO_DEBUG
     // Start KCrash
     KCrash::initialize();
+    QStringList test;
+    //qDebug() << test[1e10];
+    qDebug() << "potato3";
 //#endif
     return app.exec();
 }
