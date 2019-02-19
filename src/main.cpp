@@ -1,3 +1,7 @@
+#ifndef QT_NO_DEBUG
+#include <KCrash>
+#endif
+
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -107,5 +111,11 @@ int main(int argc, char *argv[])
 
     StyleManager::self()->setApplication(&app);
     StyleManager::self()->setQmlEngine(&engine);
+
+#ifndef QT_NO_DEBUG
+    // Start KCrash
+    KCrash::initialize();
+#endif
+
     return app.exec();
 }
