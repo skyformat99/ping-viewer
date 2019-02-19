@@ -177,7 +177,6 @@ bool ProtocolDetector::checkUdp(LinkConfiguration& linkConf)
                 break;
             }
         }
-        attempts++;
     }
 
     socket.close();
