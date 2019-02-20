@@ -8,15 +8,16 @@ LogListModel::LogListModel(QObject* parent)
         _vectors.insert(key, {});
     }
 
-    _filter.setSourceModel(this);
-    _filter.setFilterRole(Roles::Visibility);
-    _filter.setFilterWildcard("true");
+    //TODO: This crashs in msvc, no workaround was found until now
+    //_filter.setSourceModel(this);
+    //_filter.setFilterRole(Roles::Visibility);
+    //_filter.setFilterWildcard("true");
 
     /**
      * @brief New logs should use append function, and this model will use the main eventloop to handle
      * the multithread problem via signal/emit
      */
-    connect(this, &LogListModel::append, this, &LogListModel::doAppend);
+    //connect(this, &LogListModel::append, this, &LogListModel::doAppend);
 }
 
 QVariant LogListModel::data(const QModelIndex& index, int role) const
